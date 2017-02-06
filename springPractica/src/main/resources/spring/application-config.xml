@@ -56,7 +56,7 @@
 	</bean>
 
 	<bean id="currencyDAO"
-		class="org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate">
+		class="org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

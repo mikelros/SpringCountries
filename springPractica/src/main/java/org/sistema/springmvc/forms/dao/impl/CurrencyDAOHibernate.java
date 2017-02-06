@@ -10,6 +10,6 @@ import org.sistema.springmvc.forms.models.Currency;
  *
  */
 
-public class CurrencyDAOHibernate extends GenericDAOHibernate<Currency> implements CurrencyDAO {
+public class CurrencyDAOHibernate extends GenericDAOHibernate<Currency> {
 
 }

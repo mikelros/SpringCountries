@@ -45,7 +45,7 @@ public class CurrencyController {
 	// {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 
 	@Autowired
-	private GenericDAOHibernate<Currency> currencyDAO;
+	private CurrencyDAOHibernate currencyDAO;
 
 	/**
 	 * handles default /currencies

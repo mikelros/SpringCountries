@@ -35,7 +35,7 @@ public class CountryController {
 	private GenericDAOHibernate<Country> countryDAO;
 
 	@Autowired
-	private GenericDAOHibernate<Currency> currencyDAO;
+	private CurrencyDAOHibernate currencyDAO;
 
 	/**
 	 * handles /countries/id
@@ -134,6 +134,7 @@ public class CountryController {
 	@RequestMapping(value = "/countries/saveupdate", method = RequestMethod.POST)
 	public ModelAndView saveUpdateCountry(CountryDTO countryDTO) {
 		logger.info("Save update country " + countryDTO.getId());
+
 		
 		Country country = CountryMapper.toCountry(countryDTO,
 				currencyDAO.selectById(countryDTO.getCurrencyId(), Currency.class));

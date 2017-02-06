@@ -38,35 +38,39 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Currencies list</h1>
-			<p>These are the currencies currently in the system.</p>
+			<h1>Countries list</h1>
+			<p>These are the countries currently in the system.</p>
 		</div>
 
 		<table class="table">
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Abbreviation</th>
-					<th>Value</th>
+					<th>Currency</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${currencies}" var="currency">
+				<c:forEach items="${countries}" var="country">
 					<tr>
-						<td>${currency.name}</td>
-						<td>${currency.abbreviation}</td>
-						<td>${currency.value}</td>
+						<td>${country.id}</td>
+						<td>${country.name}</td>
+						<td>${country.abbreviated}</td>
+						<td>${country.currency.name}</td>
 						<td><a class="btn btn-sm btn-primary"
-							href="<s:url value="/currencies/${currency.id}" />"
+							href="<s:url value="/countries/${country.id}" />"
 							title="Detailed info"> see detail</a> <a
-							href="<c:url value="/currencies/update/${currency.id}" />"
+							href="<c:url value="/countries/update/${country.id}" />"
 							class="btn btn-sm btn-success">update</a> <a
-							href="<c:url value="/currencies/delete/${currency.id}" />"
+							href="<c:url value="/countries/delete/${country.id}" />"
 							class="btn btn-sm btn-danger">delete</a></td>
 					</tr>
 				</c:forEach>
+
 			</tbody>
+
 		</table>
 
 	</div>

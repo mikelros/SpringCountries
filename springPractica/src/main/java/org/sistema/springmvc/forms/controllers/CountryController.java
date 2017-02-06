@@ -1,5 +1,6 @@
 package org.sistema.springmvc.forms.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import org.sistema.springmvc.forms.dao.CountryDAO;
@@ -37,6 +38,23 @@ public class CountryController {
 	@Autowired
 	private CurrencyDAOHibernate currencyDAO;
 
+	/**
+	 * handles default /countries
+	 * 
+	 * @param model
+	 * @return the name of the view to show RequestMapping({"/countries"})
+	 */
+
+	@RequestMapping(method = RequestMethod.GET, value = {"/countries" })
+	public String showCountries(Map<String, Object> model) {
+		logger.info("Currency showCountries. ");
+
+		List<Country> countries = countryDAO.selectAll(Country.class);
+		model.put("countries", countries);
+
+		return "country/countries";
+	}
+	
 	/**
 	 * handles /countries/id
 	 * 

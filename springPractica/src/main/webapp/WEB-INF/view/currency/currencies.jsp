@@ -27,6 +27,8 @@
 						title="View currencies">View currencies</a></li>
 					<li><a href="<s:url value="/currencies/new" />"
 						title="New currency">New currency</a></li>
+						<li><a href="<s:url value="/countries/new" />"
+						title="New country">New country</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -53,10 +55,10 @@
 						<td>${currency.name}</td>
 						<td>${currency.abbreviation}</td>
 						<td>${currency.value}</td>
-						<td><a href="<s:url value="/currencies/${currency.id}" />"
+						<td><a class="btn btn-sm btn-primary" href="<s:url value="/currencies/${currency.id}" />"
 							title="Detailed info"> see detail</a> <a
-							href="<c:url value="/currencies/update/${currency.id}" />">update</a> <a
-							href="<c:url value="/currencies/delete/${currency.id}" />">delete</a></td>
+							href="<c:url value="/currencies/update/${currency.id}" />" class="btn btn-sm btn-success">update</a> <a
+							href="<c:url value="/currencies/delete/${currency.id}" />" class="btn btn-sm btn-danger">delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

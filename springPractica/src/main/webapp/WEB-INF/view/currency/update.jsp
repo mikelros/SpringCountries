@@ -28,7 +28,7 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Update country</h1>
+			<h1>Update currency</h1>
 		</div>
 		<s:url var="action" value="/currencies/saveupdate" />
 		<sf:form method="post" action="${action}" modelAttribute="currency">

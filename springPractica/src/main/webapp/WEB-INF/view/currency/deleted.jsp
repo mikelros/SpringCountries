@@ -27,7 +27,7 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Ok, ${currencyId} user was deleted</h1>
+			<h1>Ok, ${currencyId} currency was deleted</h1>
 		</div>
 	</div>
 

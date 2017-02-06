@@ -17,7 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
  *
  */
 
-public class GenericDAOHibernate<T> implements GenericDAO<T> {
+// si pongo implements GenericDAO<T>... Error:
+// org.springframework.beans.factory.NoSuchBeanDefinitionException: No
+// qualifying bean of type
+// [org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate] found for
+// dependency: expected at least 1 bean which qualifies as autowire candidate
+// for this dependency. Dependency annotations:
+// {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+
+public class GenericDAOHibernate<T> {
 
 	protected SessionFactory sessionFactory;
 
@@ -73,9 +81,8 @@ public class GenericDAOHibernate<T> implements GenericDAO<T> {
 	 * @throws HibernateException
 	 */
 	@Transactional(readOnly = true)
-	public T selectById(Serializable id, Class<T> entityClass)
-			throws HibernateException {
-		
+	public T selectById(Serializable id, Class<T> entityClass) throws HibernateException {
+
 		T obj = (T) getSession().get(entityClass, id);
 
 		return obj;
@@ -93,9 +100,8 @@ public class GenericDAOHibernate<T> implements GenericDAO<T> {
 	public List<T> selectAll(Class<T> entityClass) throws HibernateException {
 		List<T> result = null;
 
-			result = getSession().createQuery(
-					"FROM " + entityClass.getSimpleName()).list();
-			
+		result = getSession().createQuery("FROM " + entityClass.getSimpleName()).list();
+
 		return result;
 	}
 
@@ -106,9 +112,9 @@ public class GenericDAOHibernate<T> implements GenericDAO<T> {
 	 * @throws HibernateException
 	 */
 	@Transactional
-	public void delete(T entity) throws HibernateException {	
-			getSession().delete(entity);
-			getSession().flush();
+	public void delete(T entity) throws HibernateException {
+		getSession().delete(entity);
+		getSession().flush();
 	}
 
 	/**

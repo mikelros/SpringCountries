@@ -6,6 +6,7 @@ import org.sistema.springmvc.forms.dao.CountryDAO;
 import org.sistema.springmvc.forms.dao.CurrencyDAO;
 import org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate;
 import org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate;
+import org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate;
 import org.sistema.springmvc.forms.dtos.CountryDTO;
 import org.sistema.springmvc.forms.mappers.CountryMapper;
 import org.sistema.springmvc.forms.models.Country;
@@ -31,18 +32,18 @@ public class CountryController {
 	private static final Logger logger = LoggerFactory.getLogger(CountryController.class);
 
 	@Autowired
-	private CountryDAOHibernate countryDAO;
+	private GenericDAOHibernate<Country> countryDAO;
 
 	@Autowired
-	private CurrencyDAOHibernate currencyDAO;
+	private GenericDAOHibernate<Currency> currencyDAO;
 
 	/**
-	 * handles /country/id
+	 * handles /countries/id
 	 * 
 	 * @param model
-	 * @return the name of the view to show RequestMapping({"/country/{id}"})
+	 * @return the name of the view to show RequestMapping({"/countries/{id}"})
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = { "/country/{id}" })
+	@RequestMapping(method = RequestMethod.GET, value = { "/countries/{id}" })
 	public String currencyCountryDetail(@PathVariable(value = "id") Integer id, Map<String, Object> model) {
 		logger.info("Currency country detail");
 
@@ -50,6 +51,26 @@ public class CountryController {
 		model.put("country", country);
 
 		return "country/countryDetail";
+	}
+	
+	
+	/**
+	 * handles /currencies/new by GET
+	 * 
+	 * @return the name of the view to show RequestMapping({"/countries/new"})
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = { "/countries/new" })
+	public String newCountry(Map<String, Object> model) {
+		logger.info("Showing custom view GET ");
+
+		Country c = new Country();
+		c.setCurrency(new Currency());
+		CountryDTO countryDTO = CountryMapper.toDTO(c);
+		
+		model.put("countryDTO", countryDTO);
+		model.put("currencies", currencyDAO.selectAll(Currency.class));
+		
+		return "country/newCountry";
 	}
 
 	/**
@@ -70,6 +91,26 @@ public class CountryController {
 		return modelAndView;
 	}
 
+	/**
+	 * handles /currencies/country/new by POST
+	 * 
+	 * @return the name of the view to show RequestMapping({"/currencies/new"})
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = { "/countries/newOut" })
+	public ModelAndView createCountryOut(CountryDTO countryDTO) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		Country country = CountryMapper.toCountry(countryDTO,
+				currencyDAO.selectById(countryDTO.getCurrencyId(), Currency.class));
+		countryDAO.insert(country);
+		
+		// We return view name
+		modelAndView.setViewName("country/created");
+		modelAndView.addObject("country", country);
+		logger.info("Saveview POST " + country.getId());
+		return modelAndView;
+	}
+	
 	/**
 	 * Simply selects the update view for countries
 	 */
@@ -93,7 +134,7 @@ public class CountryController {
 	@RequestMapping(value = "/countries/saveupdate", method = RequestMethod.POST)
 	public ModelAndView saveUpdateCountry(CountryDTO countryDTO) {
 		logger.info("Save update country " + countryDTO.getId());
-
+		
 		Country country = CountryMapper.toCountry(countryDTO,
 				currencyDAO.selectById(countryDTO.getCurrencyId(), Currency.class));
 

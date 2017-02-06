@@ -21,7 +21,7 @@ public class Country {
 	private String name;
 	private String abbreviated;
 	@ManyToOne
-	@JoinColumn(name = "idcurrency")
+	@JoinColumn(name = "currency_id")
 	private Currency currency;
 
 	/**

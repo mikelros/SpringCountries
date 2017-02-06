@@ -40,7 +40,7 @@
 		</div>
 
 		<c:url var="post_currency" value="/currencies/new" />
-		<sf:form method="post" modelAttribute="currencies" action="${post_currency}">
+		<sf:form method="post" modelAttribute="currency" action="${post_currency}">
 			<div class="form-group">
 				<label for="name">Name</label>
 				<sf:input path="name" placeholder="Name" />

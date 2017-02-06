@@ -17,7 +17,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/springPractica" />
+		<property name="url" value="jdbc:mysql://localhost:3306/practicaspring" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -51,12 +51,12 @@
 
 
 	<bean id="countryDAO"
-		class="org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate">
+		class="org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<bean id="currencyDAO"
-		class="org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate">
+		class="org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

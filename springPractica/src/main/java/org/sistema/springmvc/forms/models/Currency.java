@@ -24,7 +24,7 @@ public class Currency {
 	private int id;
 	private String name;
 	private String abbreviation;
-	private String value;
+	private int value;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "currency")
 	private Set<Country> countries = new HashSet<Country>();
 
@@ -34,7 +34,7 @@ public class Currency {
 	public Currency() {
 	}
 
-	public Currency(int id, String name, String abbreviation, String value, Set<Country> currencies) {
+	public Currency(int id, String name, String abbreviation, int value, Set<Country> currencies) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -67,20 +67,20 @@ public class Currency {
 		this.abbreviation = abbreviation;
 	}
 
-	public String getValue() {
+	public int getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public Set<Country> getCurrencies() {
+	public Set<Country> getCountries() {
 		return countries;
 	}
 
-	public void setCurrencies(Set<Country> currencies) {
-		this.countries = currencies;
+	public void setCountries(Set<Country> countries) {
+		this.countries = countries;
 	}
 
 	/**

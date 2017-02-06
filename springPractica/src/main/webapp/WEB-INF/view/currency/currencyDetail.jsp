@@ -77,9 +77,9 @@
 								<td>${country.name}</td>
 								<td>${country.abbreviated}</td>
 								<td><a href="<s:url value="/countries/${country.id}" />"
-									title="Detailed info"> See detail</a> <a
-									href="<c:url value="/countries/update/${country.id}" />">Update</a> 
-									<a href="<c:url value="/countries/delete/${country.id}" />">Delete</a></td>
+									title="Detailed info" class="btn btn-sm btn-primary"> See detail</a> <a
+									href="<c:url value="/countries/update/${country.id}" />" class="btn btn-sm btn-success">Update</a> 
+									<a href="<c:url value="/countries/delete/${country.id}" />" class="btn btn-sm btn-danger">Delete</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.sistema.springmvc.forms.dao.CurrencyDAO;
 import org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate;
+import org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate;
 import org.sistema.springmvc.forms.models.Country;
 import org.sistema.springmvc.forms.models.Currency;
 import org.slf4j.Logger;
@@ -27,8 +28,24 @@ import org.springframework.web.servlet.ModelAndView;
 public class CurrencyController {
 	private static final Logger logger = LoggerFactory.getLogger(CurrencyController.class);
 
+	// si los defino como CountryDAOHibernate... Error:
+	// org.springframework.beans.factory.BeanCreationException: Error creating
+	// bean with name 'countryController': Injection of autowired dependencies
+	// failed; nested exception is
+	// org.springframework.beans.factory.BeanCreationException: Could not
+	// autowire field: private
+	// org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate
+	// org.sistema.springmvc.forms.controllers.CountryController.countryDAO;
+	// nested exception is
+	// org.springframework.beans.factory.NoSuchBeanDefinitionException: No
+	// qualifying bean of type
+	// [org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate] found for
+	// dependency: expected at least 1 bean which qualifies as autowire
+	// candidate for this dependency. Dependency annotations:
+	// {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+
 	@Autowired
-	private CurrencyDAOHibernate currencyDAO;
+	private GenericDAOHibernate<Currency> currencyDAO;
 
 	/**
 	 * handles default /currencies
@@ -60,7 +77,7 @@ public class CurrencyController {
 		Currency currency = currencyDAO.selectById(id, Currency.class);
 		// The currency gets his own collection of countries load
 		model.put("currency", currency);
-
+		
 		// We add country for the new country form
 		Country country = new Country();
 		country.setCurrency(currency);
@@ -78,7 +95,7 @@ public class CurrencyController {
 	public String newCurrency(Map<String, Object> model) {
 		logger.info("Showing custom view GET ");
 
-		model.put("Currency", new Currency());
+		model.put("currency", new Currency());
 
 		return "currency/newCurrency";
 	}

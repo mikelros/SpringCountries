@@ -51,7 +51,7 @@
 
 
 	<bean id="countryDAO"
-		class="org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate">
+		class="org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

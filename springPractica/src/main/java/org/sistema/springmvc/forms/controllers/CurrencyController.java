@@ -166,5 +166,17 @@ public class CurrencyController {
 		return "currency/deleted";
 
 	}
+	
+	/**
+	 * Delete all currencies
+	 */
+	@RequestMapping(value = "/countries/deleteAll", method = RequestMethod.GET)
+	public String deleteAllCurrencies(Map<String, Object> model) {
+
+		currencyDAO.deleteAll();
+		List<Currency> currencies = currencyDAO.selectAll(Currency.class);
+		model.put("currencies", currencies);
+		return "currency/currencies";
+	}
 
 }

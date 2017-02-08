@@ -4,7 +4,7 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>Update.jsp</title>
+<title><s:message code="title"></s:message></title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -13,14 +13,16 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Currencies app</a>
+				<a class="navbar-brand" href="#"><s:message code="navbar.title"></s:message></a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url value="/currencies/" />"
-						title="View currencies">View currencies</a></li>
+						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message
+								code="navbar.viewcurrencies"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/new" />"
-						title="New currency">New currency</a></li>
+						title="<s:message code="navbar.newcurrency"></s:message>"><s:message
+								code="navbar.newcurrency"></s:message></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -31,21 +33,24 @@
 			<h1>Update currency</h1>
 		</div>
 		<s:url var="action" value="/currencies/saveupdate" />
+		<s:message code="currency.name" var="currencyName"></s:message>
+		<s:message code="currency.abbreviation" var="currencyAbb"></s:message>
+		<s:message code="currency.value" var="currencyValue"></s:message>
 		<sf:form method="post" action="${action}" modelAttribute="currency">
 			<sf:hidden path="id" />
 			<div class="form-group">
-				<label for="name">Name</label>
-				<sf:input path="name" placeholder="Name" />
+				<label for="name">${currencyName}</label>
+				<sf:input path="name" placeholder="${currencyName}" />
 			</div>
 			<div class="form-group">
-				<label for="abbreviation">Abbreviation</label>
-				<sf:input path="abbreviation" type="abbreviation" placeholder="Abbreviation" />
+				<label for="abbreviation">${currencyAbb}</label>
+				<sf:input path="abbreviation" type="abbreviation" placeholder="${currencyAbb}" />
 			</div>
 			<div class="form-group">
-				<label for="value">Value</label>
-				<sf:textarea path="value" placeholder="Value in euros" />
+				<label for="value">${currencyValue}</label>
+				<sf:textarea path="value" placeholder="${currencyValue}" />
 			</div>
-			<sf:button>Update</sf:button>
+			<sf:button><s:message code="update"></s:message></sf:button>
 		</sf:form>
 	</div>
 

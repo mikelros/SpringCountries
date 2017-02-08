@@ -33,7 +33,7 @@ public class CountryController {
 	private static final Logger logger = LoggerFactory.getLogger(CountryController.class);
 
 	@Autowired
-	private GenericDAOHibernate<Country> countryDAO;
+	private CountryDAOHibernate countryDAO;
 
 	@Autowired
 	private CurrencyDAOHibernate currencyDAO;
@@ -185,6 +185,18 @@ public class CountryController {
 		countryDAO.delete(country);
 
 		return "country/deleted";
+	}
+	
+	/**
+	 * Delete all countries
+	 */
+	@RequestMapping(value = "/currencies/deleteAll", method = RequestMethod.GET)
+	public String deleteAllCountries(Map<String, Object> model) {
+
+		countryDAO.deleteAll();
+		List<Country> countries = countryDAO.selectAll(Country.class);
+		model.put("countries", countries);
+		return "country/countries";
 	}
 
 }

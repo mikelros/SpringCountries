@@ -9,24 +9,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring forms :: Currencies</title>
+<title><s:message code="title"></s:message></title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
 </head>
 <body>
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Currencies app</a>
+				<a class="navbar-brand" href="#"><s:message code="navbar.title"></s:message></a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url value="/currencies/" />"
-						title="View currencies">View currencies</a></li>
+						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message
+								code="navbar.viewcurrencies"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/new" />"
-						title="New currency">New currency</a></li>
+						title="<s:message code="navbar.newcurrency"></s:message>"><s:message
+								code="navbar.newcurrency"></s:message></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -40,21 +41,24 @@
 		</div>
 
 		<c:url var="post_currency" value="/currencies/new" />
+		<s:message code="currency.name" var="currencyName"></s:message>
+		<s:message code="currency.abbreviation" var="currencyAbb"></s:message>
+		<s:message code="currency.value" var="currencyValue"></s:message>
 		<sf:form method="post" modelAttribute="currency" action="${post_currency}">
 			<div class="form-group">
-				<label for="name">Name</label>
-				<sf:input path="name" placeholder="Name" />
+				<label for="name"><s:message code="currency.name"></s:message></label>
+				<sf:input path="name" placeholder="${currencyName}" />
 			</div>
 			<div class="form-group">
-				<label for="abbreviation">Abbreviation</label>
+				<label for="abbreviation"><s:message code="currency.abbreviation"></s:message></label>
 				<sf:input path="abbreviation" type="abbreviation"
-					placeholder="Abbreviation" />
+					placeholder="${currencyAbb}" />
 			</div>
 			<div class="form-group">
-				<label for="value">Value</label>
-				<sf:textarea path="value" placeholder="Value in euros" />
+				<label for="value"><s:message code="currency.value"></s:message></label>
+				<sf:textarea path="value" placeholder="${currencyValue}" />
 			</div>
-			<sf:button>Create</sf:button>
+			<sf:button><s:message code="create"></s:message></sf:button>
 		</sf:form>
 	</div>
 	<footer class="footer">

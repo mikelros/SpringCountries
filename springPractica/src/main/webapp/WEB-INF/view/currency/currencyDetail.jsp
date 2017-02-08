@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring forms :: Currencies</title>
+<title><s:message code="title"></s:message></title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -19,14 +19,16 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Currencies app</a>
+				<a class="navbar-brand" href="#"><s:message code="navbar.title"></s:message></a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url value="/currencies/" />"
-						title="View currencies">View currencies</a></li>
+						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message
+								code="navbar.viewcurrencies"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/new" />"
-						title="New currency">New currency</a></li>
+						title="<s:message code="navbar.newcurrency"></s:message>"><s:message
+								code="navbar.newcurrency"></s:message></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -45,8 +47,8 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Name</th>
-							<th>Abbreviation</th>
+							<th><s:message code="currency.name"></s:message></th>
+							<th><s:message code="currency.abbreviation"></s:message></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -59,15 +61,15 @@
 				</table>
 
 				<h3>Countries</h3>
-				
+
 				<p>These are the countries for this currency.</p>
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Abbreviated</th>
-							<th>Actions</th>
+							<th>ID</th>
+							<th><s:message code="country.name"></s:message></th>
+							<th><s:message code="country.abbreviated"></s:message></th>
+							<th><s:message code="actions"></s:message></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,33 +78,38 @@
 								<td>${country.id}</td>
 								<td>${country.name}</td>
 								<td>${country.abbreviated}</td>
-								<td><a href="<s:url value="/countries/${country.id}" />"
-									title="Detailed info" class="btn btn-sm btn-primary"> See detail</a> <a
-									href="<c:url value="/countries/update/${country.id}" />" class="btn btn-sm btn-success">Update</a> 
-									<a href="<c:url value="/countries/delete/${country.id}" />" class="btn btn-sm btn-danger">Delete</a></td>
+								<td><a class="btn btn-sm btn-primary"
+									href="<s:url value="/countries/${country.id}" />"
+									title="Detailed info"><s:message code="detail"></s:message></a>
+									<a href="<c:url value="/countries/update/${country.id}" />"
+									class="btn btn-sm btn-success"><s:message code="update"></s:message></a>
+									<a href="<c:url value="/countries/delete/${country.id}" />"
+									class="btn btn-sm btn-danger"><s:message code="delete"></s:message></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 				<h4>Insert new country</h4>
+				<s:message code="country.name" var="countryName"></s:message>
+				<s:message code="country.abbreviated" var="countryAbb"></s:message>
 				<c:url var="post_country" value="/countries/new" />
-				<sf:form method="post" modelAttribute="country" action="${post_country}">
+				<sf:form method="post" modelAttribute="country"
+					action="${post_country}">
 					<sf:hidden path="currency.id" />
 					<div class="form-group">
-						<label for="name">Name</label>
-						<sf:input path="name" placeholder="Name" />
+						<label for="name"><s:message code="country.name"></s:message></label>
+						<sf:input path="name" placeholder="${countryName}" />
 					</div>
 					<div class="form-group">
-						<label for="abbreviated">Abbreviated</label>
+						<label for="abbreviated"><s:message code="country.abbreviated"></s:message></label>
 						<sf:textarea path="abbreviated" type="abbreviated"
-							placeholder="Abbreviated" />
+							placeholder="${countryAbb}" />
 					</div>
-					<sf:button>Create</sf:button>
+					<sf:button><s:message code="create"></s:message></sf:button>
 				</sf:form>
 			</c:when>
 			<c:otherwise>
-				<div>A currency with the id specified has not been found. Please,
-					try again</div>
+				<div><s:message code="currency.error"></s:message></div>
 			</c:otherwise>
 		</c:choose>
 	</div>

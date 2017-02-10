@@ -94,22 +94,35 @@
 				<s:message code="country.abbreviated" var="countryAbb"></s:message>
 				<c:url var="post_country" value="/countries/new" />
 				<sf:form method="post" modelAttribute="country"
-					action="${post_country}">
+					action="${post_country}" class="form-horizontal">
 					<sf:hidden path="currency.id" />
 					<div class="form-group">
-						<label for="name"><s:message code="country.name"></s:message></label>
-						<sf:input path="name" placeholder="${countryName}" />
+						<label for="name" class="control-label col-sm-1"><s:message
+								code="country.name"></s:message></label>
+						<div class="col-sm-11">
+							<sf:input class="form-control" path="name"
+								placeholder="${countryName}" />
+							<sf:errors path="name" cssClass="text-danger" />
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="abbreviated"><s:message code="country.abbreviated"></s:message></label>
-						<sf:textarea path="abbreviated" type="abbreviated"
-							placeholder="${countryAbb}" />
+						<label for="abbreviated" class="control-label col-sm-1"><s:message
+								code="country.abbreviated"></s:message></label>
+						<div class="col-sm-11">
+							<sf:textarea class="form-control" path="abbreviated" type="abbreviated"
+								placeholder="${countryAbb}" />
+							<sf:errors path="abbreviated" cssClass="text-danger" />
+						</div>
 					</div>
-					<sf:button><s:message code="create"></s:message></sf:button>
+					<sf:button class="btn btn-default">
+						<s:message code="create"></s:message>
+					</sf:button>
 				</sf:form>
 			</c:when>
 			<c:otherwise>
-				<div><s:message code="currency.error"></s:message></div>
+				<div>
+					<s:message code="currency.error"></s:message>
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>

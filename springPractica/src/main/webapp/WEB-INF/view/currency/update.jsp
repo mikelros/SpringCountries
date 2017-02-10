@@ -36,21 +36,40 @@
 		<s:message code="currency.name" var="currencyName"></s:message>
 		<s:message code="currency.abbreviation" var="currencyAbb"></s:message>
 		<s:message code="currency.value" var="currencyValue"></s:message>
-		<sf:form method="post" action="${action}" modelAttribute="currency">
+		<sf:form method="post" action="${action}" modelAttribute="currency"
+			class="form-horizontal">
 			<sf:hidden path="id" />
 			<div class="form-group">
-				<label for="name">${currencyName}</label>
-				<sf:input path="name" placeholder="${currencyName}" />
+				<label class="control-label col-sm-1" for="name">${currencyName}</label>
+				<div class="col-sm-11">
+
+					<sf:input path="name" class="form-control" placeholder="${currencyName}" />
+					<sf:errors path="name" cssClass="text-danger" />
+				</div>
+
 			</div>
 			<div class="form-group">
-				<label for="abbreviation">${currencyAbb}</label>
-				<sf:input path="abbreviation" type="abbreviation" placeholder="${currencyAbb}" />
+				<label class="control-label col-sm-1" for="abbreviation">${currencyAbb}</label>
+				<div class="col-sm-11">
+
+					<sf:input class="form-control" path="abbreviation" type="abbreviation"
+						placeholder="${currencyAbb}" />
+					<sf:errors path="abbreviation" cssClass="text-danger" />
+				</div>
+
 			</div>
 			<div class="form-group">
-				<label for="value">${currencyValue}</label>
-				<sf:textarea path="value" placeholder="${currencyValue}" />
+				<label class="control-label col-sm-1" for="value">${currencyValue}</label>
+				<div class="col-sm-11">
+
+					<sf:input class="form-control" path="value" placeholder="${currencyValue}" />
+					<sf:errors path="value" cssClass="text-danger" />
+				</div>
+
 			</div>
-			<sf:button><s:message code="update"></s:message></sf:button>
+			<sf:button class="btn btn-default">
+				<s:message code="update"></s:message>
+			</sf:button>
 		</sf:form>
 	</div>
 

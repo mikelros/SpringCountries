@@ -44,21 +44,45 @@
 		<s:message code="currency.name" var="currencyName"></s:message>
 		<s:message code="currency.abbreviation" var="currencyAbb"></s:message>
 		<s:message code="currency.value" var="currencyValue"></s:message>
-		<sf:form method="post" modelAttribute="currency" action="${post_currency}">
+		<sf:form method="post" modelAttribute="currency"
+			action="${post_currency}" class="form-horizontal">
 			<div class="form-group">
-				<label for="name"><s:message code="currency.name"></s:message></label>
-				<sf:input path="name" placeholder="${currencyName}" />
+				<label for="name" class="control-label col-sm-1"><s:message
+						code="currency.name"></s:message></label>
+				<div class="col-sm-11">
+
+					<sf:input class="form-control" path="name"
+						placeholder="${currencyName}" />
+					<sf:errors path="name" cssClass="text-danger" />
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="abbreviation" class="control-label col-sm-1"><s:message
+						code="currency.abbreviation"></s:message></label>
+				<div class="col-sm-11">
+
+					<sf:input class="form-control" path="abbreviation"
+						type="abbreviation" placeholder="${currencyAbb}" />
+					<sf:errors path="abbreviation" cssClass="text-danger" />
+				</div>
+
 			</div>
 			<div class="form-group">
-				<label for="abbreviation"><s:message code="currency.abbreviation"></s:message></label>
-				<sf:input path="abbreviation" type="abbreviation"
-					placeholder="${currencyAbb}" />
+				<label for="value" class="control-label col-sm-1"><s:message
+						code="currency.value"></s:message></label>
+				<div class="col-sm-11">
+
+					<sf:input class="form-control" path="value"
+						placeholder="${currencyValue}" />
+					<sf:errors path="value" cssClass="text-danger" />
+				</div>
+
 			</div>
-			<div class="form-group">
-				<label for="value"><s:message code="currency.value"></s:message></label>
-				<sf:textarea path="value" placeholder="${currencyValue}" />
-			</div>
-			<sf:button><s:message code="create"></s:message></sf:button>
+			<sf:button class="btn btn-default">
+				<s:message code="create"></s:message>
+			</sf:button>
 		</sf:form>
 	</div>
 	<footer class="footer">

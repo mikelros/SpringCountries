@@ -41,11 +41,11 @@
 								code="navbar.language"></s:message> <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="?locale=en"><img src="blank.gif"
+							<li><a href="?locale=en"><img src="<c:url value="/resources/images/blank.gif" />"
 									class="flag flag-gb"
 									alt="<s:message code="english"></s:message>" /> <s:message
 										code="english"></s:message></a></li>
-							<li><a href="?locale=es"><img src="blank.gif"
+							<li><a href="?locale=es"><img src="<c:url value="/resources/images/blank.gif" />"
 									class="flag flag-es"
 									alt="<s:message code="spanish"></s:message>" /> <s:message
 										code="spanish"></s:message></a></li>

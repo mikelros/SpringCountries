@@ -1,5 +1,8 @@
 package org.sistema.springmvc.forms.dtos;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Represents a Task.
  * 
@@ -9,7 +12,13 @@ package org.sistema.springmvc.forms.dtos;
 public class CountryDTO {
 
 	private int id;
+	
+	@NotNull(message = "Please enter a name.")
+	@Size(min = 1, max = 50, message = "Name must be between 1 and 30 characters long.")
 	private String name;
+	
+	@NotNull(message = "Please enter an abbreviated name.")
+	@Size(min = 2, max = 2, message = "Abbreviated name must be 2 characters long.")
 	private String abbreviated;
 	// Adding new fields
 	private int currencyId;

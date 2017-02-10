@@ -19,11 +19,14 @@
 				<ul class="nav navbar-nav">
 					<li><a
 						href="<s:url value="/currencies/${country.currencyId}" />"
-						title="<s:message code="currency.back"></s:message>"><s:message code="currency.back"></s:message></a></li>
+						title="<s:message code="currency.back"></s:message>"><s:message
+								code="currency.back"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/" />"
-						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message code="navbar.viewcurrencies"></s:message></a></li>
+						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message
+								code="navbar.viewcurrencies"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/new" />"
-						title="<s:message code="navbar.newcurrency"></s:message>"><s:message code="navbar.newcurrency"></s:message></a></li>
+						title="<s:message code="navbar.newcurrency"></s:message>"><s:message
+								code="navbar.newcurrency"></s:message></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -35,26 +38,48 @@
 			<h1>Update currency country</h1>
 
 		</div>
-		<s:message code="country.name" var="countryName"/>
-		<s:message code="country.abbreviated" var="countryAbb"/>
+		<s:message code="country.name" var="countryName" />
+		<s:message code="country.abbreviated" var="countryAbb" />
 		<s:url var="action" value="/countries/saveupdate" />
-		<sf:form method="post" action="${action}" modelAttribute="country">
-			<sf:hidden path="id" />		
+		<sf:form method="post" action="${action}" modelAttribute="country"
+			class="form-horizontal">
+			<sf:hidden path="id" />
 			<div class="form-group">
-				<label for="name"><s:message code="country.name"></s:message></label>
-				<sf:input path="name" placeholder="${countryName}" />
+				<label for="name" class="control-label col-sm-1"><s:message
+						code="country.name"></s:message></label>
+				<div class="col-sm-11">
+
+					<sf:input class="form-control" path="name"
+						placeholder="${countryName}" />
+					<sf:errors path="name" cssClass="text-danger" />
+				</div>
 			</div>
 			<div class="form-group">
-				<label for="currencyId"><s:message code="country.currency"></s:message></label>
-				<sf:select path="currencyId" >
-				<sf:options items="${currencies}" itemLabel="name" itemValue="id"  />
-			</sf:select>
+				<label for="currencyId" class="control-label col-sm-1"><s:message
+						code="country.currency"></s:message></label>
+				<div class="col-sm-11">
+
+					<sf:select path="currencyId" class="form-control">
+						<sf:options items="${currencies}" itemLabel="name" itemValue="id" />
+					</sf:select>
+					<sf:errors path="currencyId" cssClass="text-danger" />
+
+				</div>
+
 			</div>
 			<div class="form-group">
-				<label for="abbreviated"><s:message code="country.abbreviated"></s:message></label>
-				<sf:textarea path="abbreviated" placeholder="${countryAbb}" />
+				<label for="abbreviated" class="control-label col-sm-1"><s:message
+						code="country.abbreviated"></s:message></label>
+				<div class="col-sm-11">
+
+					<sf:textarea path="abbreviated" class="form-control"
+						placeholder="${countryAbb}" />
+					<sf:errors path="abbreviated" cssClass="text-danger" />
+				</div>
 			</div>
-			<sf:button><s:message code="update"></s:message></sf:button>
+			<sf:button class="btn btn-default">
+				<s:message code="update"></s:message>
+			</sf:button>
 		</sf:form>
 	</div>
 	<footer class="footer">

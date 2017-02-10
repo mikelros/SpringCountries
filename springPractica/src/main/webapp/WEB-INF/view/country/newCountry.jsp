@@ -25,11 +25,14 @@
 				<ul class="nav navbar-nav">
 					<li><a
 						href="<s:url value="/currencies/${country.currency.id}" />"
-						title="<s:message code="currency.back"></s:message>"><s:message code="currency.back"></s:message></a></li>
+						title="<s:message code="currency.back"></s:message>"><s:message
+								code="currency.back"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/" />"
-						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message code="navbar.viewcurrencies"></s:message></a></li>
+						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message
+								code="navbar.viewcurrencies"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/new" />"
-						title="<s:message code="navbar.newcurrency"></s:message>"><s:message code="navbar.newcurrency"></s:message></a></li>
+						title="<s:message code="navbar.newcurrency"></s:message>"><s:message
+								code="navbar.newcurrency"></s:message></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -46,24 +49,41 @@
 		<c:url var="post_country" value="/countries/newOut" />
 		<s:message code="country.name" var="countryName"></s:message>
 		<s:message code="country.abbreviated" var="countryAbb"></s:message>
-		<sf:form method="post" modelAttribute="countryDTO" action="${post_country}">
+		<sf:form method="post" modelAttribute="countryDTO"
+			action="${post_country}" class="form-horizontal">
 			<div class="form-group">
-				<label for="name"><s:message code="country.name"></s:message></label>
-				<sf:input path="name" placeholder="${countryName}" />
+				<label for="name" class="control-label col-sm-1"><s:message
+						code="country.name"></s:message></label>
+				<div class="col-sm-11">
+					<sf:input class="form-control" path="name"
+						placeholder="${countryName}" />
+					<sf:errors path="name" cssClass="text-danger" />
+				</div>
 			</div>
 			<div class="form-group">
-				<label for="abbreviated"><s:message code="country.abbreviated"></s:message></label>
-				<sf:input path="abbreviated" type="abbreviated"
-					placeholder="${countryAbb}" />
+				<label for="abbreviated" class="control-label col-sm-1"><s:message
+						code="country.abbreviated"></s:message></label>
+				<div class="col-sm-11">
+					<sf:input class="form-control" path="abbreviated"
+						type="abbreviated" placeholder="${countryAbb}" />
+					<sf:errors path="abbreviated" cssClass="text-danger" />
+				</div>
 			</div>
 			<div class="form-group">
-				<label for="currencyId"><s:message code="country.currency"></s:message></label>
-				<sf:select path="currencyId" >
-				<sf:options items="${currencies}" itemLabel="name" itemValue="id"  />
-			</sf:select>
+				<label for="currencyId" class="control-label col-sm-1"><s:message
+						code="country.currency"></s:message></label>
+				<div class="col-sm-11">
+					<sf:select class="form-control" path="currencyId">
+						<sf:options items="${currencies}" itemLabel="name" itemValue="id" />
+					</sf:select>
+					<sf:errors path="currencyId" cssClass="text-danger" />
+
+				</div>
 			</div>
-			
-			<sf:button><s:message code="create"></s:message></sf:button>
+
+			<sf:button class="btn btn-default">
+				<s:message code="create"></s:message>
+			</sf:button>
 		</sf:form>
 	</div>
 	<footer class="footer">
@@ -71,6 +91,5 @@
 			<p class="text-muted">&copy; 2015 Eugenia Pérez</p>
 		</div>
 	</footer>
-
 </body>
 </html>

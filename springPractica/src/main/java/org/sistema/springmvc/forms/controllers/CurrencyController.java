@@ -3,6 +3,8 @@ package org.sistema.springmvc.forms.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.sistema.springmvc.forms.dao.CurrencyDAO;
 import org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate;
 import org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -77,7 +80,7 @@ public class CurrencyController {
 		Currency currency = currencyDAO.selectById(id, Currency.class);
 		// The currency gets his own collection of countries load
 		model.put("currency", currency);
-		
+
 		// We add country for the new country form
 		Country country = new Country();
 		country.setCurrency(currency);
@@ -106,10 +109,15 @@ public class CurrencyController {
 	 * @return the name of the view to show RequestMapping({"/currencies/new"})
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "/currencies/new" })
-	public ModelAndView createCurrency(Currency currency) {
+	public ModelAndView createCurrency(@Valid Currency currency, BindingResult bindingResult) {
 		logger.info("Saveview POST " + currency.getId());
 
 		ModelAndView modelAndView = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("currency/newCurrency");
+			modelAndView.addObject("currency", currency);
+			return modelAndView;
+		}
 
 		currencyDAO.insert(currency);
 		// We return view name
@@ -136,12 +144,18 @@ public class CurrencyController {
 	 * Handles the POST from the Custom.jsp page to update the Currency.
 	 */
 	@RequestMapping(value = "/currencies/saveupdate", method = RequestMethod.POST)
-	public ModelAndView saveUpdate(Currency currency) {
+	public ModelAndView saveUpdate(@Valid Currency currency, BindingResult bindingResult) {
 		logger.info("Save update " + currency.getId());
 
-		currencyDAO.update(currency);
-
 		ModelAndView modelAndView = new ModelAndView();
+
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("currency/update");
+			modelAndView.addObject("currency", currency);
+			return modelAndView;
+		}
+
+		currencyDAO.update(currency);
 
 		// We pass the currency received through this object
 		modelAndView.addObject("currency", currency);
@@ -166,7 +180,7 @@ public class CurrencyController {
 		return "currency/deleted";
 
 	}
-	
+
 	/**
 	 * Delete all currencies
 	 */

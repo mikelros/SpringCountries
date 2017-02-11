@@ -25,11 +25,14 @@
 				<ul class="nav navbar-nav">
 					<li><a
 						href="<s:url value="/currencies/${country.currency.id}" />"
-						title="<s:message code="currency.back"></s:message>"><s:message code="currency.back"></s:message></a></li>
+						title="<s:message code="currency.back"></s:message>"><s:message
+								code="currency.back"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/" />"
-						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message code="navbar.viewcurrencies"></s:message></a></li>
+						title="<s:message code="navbar.viewcurrencies"></s:message>"><s:message
+								code="navbar.viewcurrencies"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/new" />"
-						title="<s:message code="navbar.newcurrency"></s:message>"><s:message code="navbar.newcurrency"></s:message></a></li>
+						title="<s:message code="navbar.newcurrency"></s:message>"><s:message
+								code="navbar.newcurrency"></s:message></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -65,7 +68,9 @@
 
 			</c:when>
 			<c:otherwise>
-				<div><s:message code="country.error"></s:message></div>
+				<div>
+					<s:message code="country.error"></s:message>
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>

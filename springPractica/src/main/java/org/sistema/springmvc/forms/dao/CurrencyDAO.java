@@ -5,9 +5,9 @@ import org.sistema.springmvc.forms.models.Currency;
 /**
  * Interface for a UserDAO.
  * 
- * @author Eugenia Pérez Martínez.
+ * @author Mikel Ros.
  *
  */
 public interface CurrencyDAO extends GenericDAO<Currency> {
-	
+
 }

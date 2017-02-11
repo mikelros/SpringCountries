@@ -5,9 +5,9 @@ import org.sistema.springmvc.forms.models.Country;
 /**
  * Interface for a TaskDAO.
  * 
- * @author Eugenia Pérez Martínez.
+ * @author Mikel Ros.
  *
  */
 public interface CountryDAO extends GenericDAO<Country> {
-	
+
 }

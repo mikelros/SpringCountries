@@ -43,7 +43,8 @@
 				<label class="control-label col-sm-1" for="name">${currencyName}</label>
 				<div class="col-sm-11">
 
-					<sf:input path="name" class="form-control" placeholder="${currencyName}" />
+					<sf:input path="name" class="form-control"
+						placeholder="${currencyName}" />
 					<sf:errors path="name" cssClass="text-danger" />
 				</div>
 
@@ -52,8 +53,8 @@
 				<label class="control-label col-sm-1" for="abbreviation">${currencyAbb}</label>
 				<div class="col-sm-11">
 
-					<sf:input class="form-control" path="abbreviation" type="abbreviation"
-						placeholder="${currencyAbb}" />
+					<sf:input class="form-control" path="abbreviation"
+						type="abbreviation" placeholder="${currencyAbb}" />
 					<sf:errors path="abbreviation" cssClass="text-danger" />
 				</div>
 
@@ -62,7 +63,8 @@
 				<label class="control-label col-sm-1" for="value">${currencyValue}</label>
 				<div class="col-sm-11">
 
-					<sf:input class="form-control" path="value" placeholder="${currencyValue}" />
+					<sf:input class="form-control" path="value"
+						placeholder="${currencyValue}" />
 					<sf:errors path="value" cssClass="text-danger" />
 				</div>
 

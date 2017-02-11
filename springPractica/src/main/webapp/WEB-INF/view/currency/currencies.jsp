@@ -13,7 +13,7 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">	
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
 
@@ -25,7 +25,8 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url value="/currencies/" />"
-						title="View currencies"><s:message code="navbar.viewcurrencies"></s:message></a></li>
+						title="View currencies"><s:message
+								code="navbar.viewcurrencies"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/new" />"
 						title="New currency"><s:message code="navbar.newcurrency"></s:message></a></li>
 					<li><a href="<s:url value="/countries/" />"
@@ -36,16 +37,18 @@
 						title="Delete All"><s:message code="navbar.deletecurrencies"></s:message></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown" role="menu"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="true"><s:message
-								code="navbar.language"></s:message> <span class="caret"></span>
-					</a>
+					<li class="dropdown" role="menu"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-expanded="true"><s:message code="navbar.language"></s:message>
+							<span class="caret"></span> </a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="?locale=en"><img src="<c:url value="/resources/images/blank.gif" />"
+							<li><a href="?locale=en"><img
+									src="<c:url value="/resources/images/blank.gif" />"
 									class="flag flag-gb"
 									alt="<s:message code="english"></s:message>" /> <s:message
 										code="english"></s:message></a></li>
-							<li><a href="?locale=es"><img src="<c:url value="/resources/images/blank.gif" />"
+							<li><a href="?locale=es"><img
+									src="<c:url value="/resources/images/blank.gif" />"
 									class="flag flag-es"
 									alt="<s:message code="spanish"></s:message>" /> <s:message
 										code="spanish"></s:message></a></li>
@@ -57,8 +60,12 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1><s:message code="currency.title"></s:message></h1>
-			<p><s:message code="currency.info"></s:message></p>
+			<h1>
+				<s:message code="currency.title"></s:message>
+			</h1>
+			<p>
+				<s:message code="currency.info"></s:message>
+			</p>
 		</div>
 
 		<table class="table">
@@ -80,8 +87,8 @@
 							href="<s:url value="/currencies/${currency.id}" />"
 							title="Detailed info"><s:message code="detail"></s:message></a> <a
 							href="<c:url value="/currencies/update/${currency.id}" />"
-							class="btn btn-sm btn-success"><s:message code="update"></s:message></a> <a
-							href="<c:url value="/currencies/delete/${currency.id}" />"
+							class="btn btn-sm btn-success"><s:message code="update"></s:message></a>
+							<a href="<c:url value="/currencies/delete/${currency.id}" />"
 							class="btn btn-sm btn-danger"><s:message code="delete"></s:message></a></td>
 					</tr>
 				</c:forEach>
@@ -94,7 +101,7 @@
 			<p class="text-muted">&copy; 2015 Eugenia Pérez</p>
 		</div>
 	</footer>
-	
+
 	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

@@ -96,6 +96,8 @@
 				<sf:form method="post" modelAttribute="country"
 					action="${post_country}" class="form-horizontal">
 					<sf:hidden path="currency.id" />
+					<sf:hidden path="currency.name" />
+					<sf:hidden path="currency.value" />
 					<div class="form-group">
 						<label for="name" class="control-label col-sm-1"><s:message
 								code="country.name"></s:message></label>
@@ -109,8 +111,8 @@
 						<label for="abbreviated" class="control-label col-sm-1"><s:message
 								code="country.abbreviated"></s:message></label>
 						<div class="col-sm-11">
-							<sf:textarea class="form-control" path="abbreviated" type="abbreviated"
-								placeholder="${countryAbb}" />
+							<sf:textarea class="form-control" path="abbreviated"
+								type="abbreviated" placeholder="${countryAbb}" />
 							<sf:errors path="abbreviated" cssClass="text-danger" />
 						</div>
 					</div>

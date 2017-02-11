@@ -74,7 +74,7 @@
 						code="currency.value"></s:message></label>
 				<div class="col-sm-11">
 
-					<sf:input class="form-control" path="value"
+					<sf:input type="number" class="form-control" path="value"
 						placeholder="${currencyValue}" />
 					<sf:errors path="value" cssClass="text-danger" />
 				</div>

@@ -16,9 +16,8 @@ public class CountryMapper {
 	}
 
 	public static CountryDTO toDTO(Country country) {
-		CountryDTO countryDTO = new CountryDTO(country.getId(), country.getName(),
-				country.getAbbreviated(), country.getCurrency().getId(), country.getCurrency()
-						.getName());
+		CountryDTO countryDTO = new CountryDTO(country.getId(), country.getName(), country.getAbbreviated(),
+				country.getCurrency().getId(), country.getCurrency().getName());
 		return countryDTO;
 	}
 

@@ -2,14 +2,9 @@ package org.sistema.springmvc.forms.controllers;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.validation.Valid;
-
-import org.sistema.springmvc.forms.dao.CountryDAO;
-import org.sistema.springmvc.forms.dao.CurrencyDAO;
 import org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate;
 import org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate;
-import org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate;
 import org.sistema.springmvc.forms.dtos.CountryDTO;
 import org.sistema.springmvc.forms.mappers.CountryMapper;
 import org.sistema.springmvc.forms.models.Country;
@@ -29,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Controller for countries.
  * 
- * @author Eugenia Pérez Martínez
+ * @author Mikel Ros
  *
  */
 @Controller
@@ -117,7 +112,6 @@ public class CountryController {
 		// We return view name
 		modelAndView.setViewName("country/created");
 		modelAndView.addObject("country", country);
-		logger.info("Saveview POST " + country.getId());
 		return modelAndView;
 	}
 
@@ -170,7 +164,8 @@ public class CountryController {
 	 * Handles the POST from the Custom.jsp page to update the Currency.
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/countries/saveupdate")
-	public ModelAndView saveUpdateCountry(@ModelAttribute("country") @Valid CountryDTO countryDTO, BindingResult bindingResult) {
+	public ModelAndView saveUpdateCountry(@ModelAttribute("country") @Valid CountryDTO countryDTO,
+			BindingResult bindingResult) {
 		logger.info("Save update country " + countryDTO.getId());
 
 		ModelAndView modelAndView = new ModelAndView();
@@ -215,7 +210,7 @@ public class CountryController {
 	/**
 	 * Delete all countries
 	 */
-	@RequestMapping(value = "/currencies/deleteAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/countries/deleteAll", method = RequestMethod.GET)
 	public String deleteAllCountries(Map<String, Object> model) {
 
 		countryDAO.deleteAll();

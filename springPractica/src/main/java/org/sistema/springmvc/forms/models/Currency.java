@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 /**
  * Represents a user.
  * 
- * @author Eugenia Pérez Martínez
+ * @author Mikel Ros
  *
  */
 @Entity
@@ -26,21 +26,19 @@ public class Currency {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@NotNull(message = "Please enter a name.")
 	@Size(min = 1, max = 30, message = "Name must be between 1 and 30 characters long.")
 	private String name;
-	
+
 	@NotNull(message = "Please enter an abbreviation.")
 	@Size(min = 1, max = 3, message = "Abbreviation must be between and 1 and 3 characters long.")
 	private String abbreviation;
-	
+
 	@NotNull(message = "Please enter a value.")
-	@Size(min = 1, message = "Value must have a value.")
-	@Pattern(regexp = "[0-9]+", message = "Must contain just numbers.")
-	@Min(0)
-	private String value;
-	
+	@Min(value = 0, message = "must be >=0")
+	private Integer value;
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "currency")
 	private Set<Country> countries = new HashSet<Country>();
 
@@ -50,7 +48,7 @@ public class Currency {
 	public Currency() {
 	}
 
-	public Currency(int id, String name, String abbreviation, String value, Set<Country> currencies) {
+	public Currency(int id, String name, String abbreviation, Integer value, Set<Country> currencies) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -83,11 +81,11 @@ public class Currency {
 		this.abbreviation = abbreviation;
 	}
 
-	public String getValue() {
+	public Integer getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(Integer value) {
 		this.value = value;
 	}
 
@@ -101,7 +99,7 @@ public class Currency {
 
 	/**
 	 * 
-	 * @param task
+	 * @param country
 	 */
 	public void addCountry(Country country) {
 		this.countries.add(country);

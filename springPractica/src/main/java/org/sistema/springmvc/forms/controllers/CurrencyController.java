@@ -2,12 +2,8 @@ package org.sistema.springmvc.forms.controllers;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.validation.Valid;
-
-import org.sistema.springmvc.forms.dao.CurrencyDAO;
 import org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate;
-import org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate;
 import org.sistema.springmvc.forms.models.Country;
 import org.sistema.springmvc.forms.models.Currency;
 import org.slf4j.Logger;
@@ -24,28 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Controller for currencies.
  * 
- * @author Eugenia Pérez Martínez
+ * @author Mikel Ros
  *
  */
 @Controller
 public class CurrencyController {
 	private static final Logger logger = LoggerFactory.getLogger(CurrencyController.class);
-
-	// si los defino como CountryDAOHibernate... Error:
-	// org.springframework.beans.factory.BeanCreationException: Error creating
-	// bean with name 'countryController': Injection of autowired dependencies
-	// failed; nested exception is
-	// org.springframework.beans.factory.BeanCreationException: Could not
-	// autowire field: private
-	// org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate
-	// org.sistema.springmvc.forms.controllers.CountryController.countryDAO;
-	// nested exception is
-	// org.springframework.beans.factory.NoSuchBeanDefinitionException: No
-	// qualifying bean of type
-	// [org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate] found for
-	// dependency: expected at least 1 bean which qualifies as autowire
-	// candidate for this dependency. Dependency annotations:
-	// {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 
 	@Autowired
 	private CurrencyDAOHibernate currencyDAO;
@@ -184,7 +164,7 @@ public class CurrencyController {
 	/**
 	 * Delete all currencies
 	 */
-	@RequestMapping(value = "/countries/deleteAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/currencies/deleteAll", method = RequestMethod.GET)
 	public String deleteAllCurrencies(Map<String, Object> model) {
 
 		currencyDAO.deleteAll();

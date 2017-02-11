@@ -2,28 +2,17 @@ package org.sistema.springmvc.forms.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.sistema.springmvc.forms.dao.GenericDAO;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Generic DAO to share logic between all the specific DAOs.
  * 
- * @author Eugenia P�rez Mart�nez
+ * @author Mikel Ros
  *
  */
-
-// si pongo implements GenericDAO<T>... Error:
-// org.springframework.beans.factory.NoSuchBeanDefinitionException: No
-// qualifying bean of type
-// [org.sistema.springmvc.forms.dao.impl.GenericDAOHibernate] found for
-// dependency: expected at least 1 bean which qualifies as autowire candidate
-// for this dependency. Dependency annotations:
-// {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 
 public class GenericDAOHibernate<T> {
 

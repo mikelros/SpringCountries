@@ -1,5 +1,7 @@
 package org.sistema.springmvc.forms.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.sistema.springmvc.forms.models.Currency;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,4 +24,15 @@ public class CurrencyDAOHibernate extends GenericDAOHibernate<Currency> {
 
 		query.executeUpdate();
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Currency> lastCurrencies(Integer id) {
+
+		Query query = getSession().createQuery("from Currency c where c.id > :id order by c.id");
+
+		query.setParameter("id", id);
+
+		return query.list();
+	}
+	
 }

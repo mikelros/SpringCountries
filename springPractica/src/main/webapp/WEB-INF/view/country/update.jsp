@@ -18,7 +18,7 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a
-						href="<s:url value="/currencies/${country.currencyId}" />"
+						href="<s:url value="/currencies/${country.currency.id}" />"
 						title="<s:message code="currency.back"></s:message>"><s:message
 								code="currency.back"></s:message></a></li>
 					<li><a href="<s:url value="/currencies/" />"
@@ -55,14 +55,14 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="currencyId" class="control-label col-sm-1"><s:message
+				<label for="currency.id" class="control-label col-sm-1"><s:message
 						code="country.currency"></s:message></label>
 				<div class="col-sm-11">
 
-					<sf:select path="currencyId" class="form-control">
+					<sf:select path="currency.id" class="form-control">
 						<sf:options items="${currencies}" itemLabel="name" itemValue="id" />
 					</sf:select>
-					<sf:errors path="currencyId" cssClass="text-danger" />
+					<sf:errors path="currency.id" cssClass="text-danger" />
 
 				</div>
 

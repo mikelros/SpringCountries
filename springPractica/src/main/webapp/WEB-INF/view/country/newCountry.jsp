@@ -49,8 +49,8 @@
 		<c:url var="post_country" value="/countries/newOut" />
 		<s:message code="country.name" var="countryName"></s:message>
 		<s:message code="country.abbreviated" var="countryAbb"></s:message>
-		<sf:form method="post" modelAttribute="countryDTO"
-			action="${post_country}" class="form-horizontal">
+		<sf:form method="post" modelAttribute="country"
+			action="${post_country}" class="form-horizontal">	
 			<div class="form-group">
 				<label for="name" class="control-label col-sm-1"><s:message
 						code="country.name"></s:message></label>
@@ -70,13 +70,13 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="currencyId" class="control-label col-sm-1"><s:message
+				<label for="currency.id" class="control-label col-sm-1"><s:message
 						code="country.currency"></s:message></label>
 				<div class="col-sm-11">
-					<sf:select class="form-control" path="currencyId">
+					<sf:select class="form-control" path="currency.id">
 						<sf:options items="${currencies}" itemLabel="name" itemValue="id" />
 					</sf:select>
-					<sf:errors path="currencyId" cssClass="text-danger" />
+					<sf:errors path="currency.id" cssClass="text-danger" />
 
 				</div>
 			</div>

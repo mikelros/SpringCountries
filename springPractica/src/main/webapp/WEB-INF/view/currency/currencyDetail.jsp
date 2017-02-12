@@ -98,6 +98,7 @@
 					<sf:hidden path="currency.id" />
 					<sf:hidden path="currency.name" />
 					<sf:hidden path="currency.value" />
+					<sf:hidden path="id" />
 					<div class="form-group">
 						<label for="name" class="control-label col-sm-1"><s:message
 								code="country.name"></s:message></label>

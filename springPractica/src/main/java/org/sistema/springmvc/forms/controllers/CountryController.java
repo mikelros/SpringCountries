@@ -5,8 +5,6 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.sistema.springmvc.forms.dao.impl.CountryDAOHibernate;
 import org.sistema.springmvc.forms.dao.impl.CurrencyDAOHibernate;
-import org.sistema.springmvc.forms.dtos.CountryDTO;
-import org.sistema.springmvc.forms.mappers.CountryMapper;
 import org.sistema.springmvc.forms.models.Country;
 import org.sistema.springmvc.forms.models.Currency;
 import org.slf4j.Logger;
@@ -81,9 +79,8 @@ public class CountryController {
 
 		Country c = new Country();
 		c.setCurrency(new Currency());
-		CountryDTO countryDTO = CountryMapper.toDTO(c);
 
-		model.put("countryDTO", countryDTO);
+		model.put("country", c);
 		model.put("currencies", currencyDAO.selectAll(Currency.class));
 
 		return "country/newCountry";
@@ -121,19 +118,18 @@ public class CountryController {
 	 * @return the name of the view to show RequestMapping({"/currencies/new"})
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "/countries/newOut" })
-	public ModelAndView createCountryOut(@Valid CountryDTO countryDTO, BindingResult bindingResult) {
+	public ModelAndView createCountryOut(@Valid Country country, BindingResult bindingResult) {
 
 		ModelAndView modelAndView = new ModelAndView();
 
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("country/newCountry");
-			modelAndView.addObject("countryDTO", countryDTO);
+			modelAndView.addObject("country", country);
 			modelAndView.addObject("currencies", currencyDAO.selectAll(Currency.class));
 			return modelAndView;
 		}
-
-		Country country = CountryMapper.toCountry(countryDTO,
-				currencyDAO.selectById(countryDTO.getCurrencyId(), Currency.class));
+		
+		country.setCurrency(currencyDAO.selectById(country.getCurrency().getId(), Currency.class));
 		countryDAO.insert(country);
 
 		// We return view name
@@ -152,9 +148,7 @@ public class CountryController {
 
 		Country country = countryDAO.selectById(countryId, Country.class);
 
-		CountryDTO countryDTO = CountryMapper.toDTO(country);
-
-		model.addAttribute("country", countryDTO);
+		model.addAttribute("country", country);
 		model.addAttribute("currencies", currencyDAO.selectAll(Currency.class));
 
 		return "country/update";
@@ -164,20 +158,17 @@ public class CountryController {
 	 * Handles the POST from the Custom.jsp page to update the Currency.
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/countries/saveupdate")
-	public ModelAndView saveUpdateCountry(@ModelAttribute("country") @Valid CountryDTO countryDTO,
+	public ModelAndView saveUpdateCountry(@ModelAttribute("country") @Valid Country country,
 			BindingResult bindingResult) {
-		logger.info("Save update country " + countryDTO.getId());
+		logger.info("Save update country " + country.getId());
 
 		ModelAndView modelAndView = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("country/update");
-			modelAndView.addObject("country", countryDTO);
+			modelAndView.addObject("country", country);
 			modelAndView.addObject("currencies", currencyDAO.selectAll(Currency.class));
 			return modelAndView;
 		}
-
-		Country country = CountryMapper.toCountry(countryDTO,
-				currencyDAO.selectById(countryDTO.getCurrencyId(), Currency.class));
 
 		countryDAO.update(country);
 

@@ -48,6 +48,7 @@
 					<th>ID</th>
 					<th><s:message code="currency.name"></s:message></th>
 					<th><s:message code="currency.abbreviation"></s:message></th>
+					<th><s:message code="currency.value"></s:message></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -55,6 +56,7 @@
 					<td>${currency.id}</td>
 					<td>${currency.name}</td>
 					<td>${currency.abbreviation}</td>
+					<td>${currency.value}</td>
 				</tr>
 			</tbody>
 		</table>

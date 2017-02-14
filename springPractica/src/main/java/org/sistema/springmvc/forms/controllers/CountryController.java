@@ -48,7 +48,7 @@ public class CountryController {
 
 		List<Country> countries = countryDAO.selectAll(Country.class);
 		model.put("countries", countries);
-
+		model.put("searchCountry", new Country());
 		return "country/countries";
 	}
 
@@ -128,7 +128,7 @@ public class CountryController {
 			modelAndView.addObject("currencies", currencyDAO.selectAll(Currency.class));
 			return modelAndView;
 		}
-		
+
 		country.setCurrency(currencyDAO.selectById(country.getCurrency().getId(), Currency.class));
 		countryDAO.insert(country);
 
@@ -207,6 +207,19 @@ public class CountryController {
 		countryDAO.deleteAll();
 		List<Country> countries = countryDAO.selectAll(Country.class);
 		model.put("countries", countries);
+		model.put("searchCountry", new Country());
+		return "country/countries";
+	}
+
+	/**
+	 * search countries by name
+	 */
+	@RequestMapping(value = "/countries/search", method = RequestMethod.POST)
+	public String searchCountries(Country country, Model model) {
+		List<Country> countries = countryDAO.searchCountries(country.getName());
+		model.addAttribute("countries", countries);
+		model.addAttribute("searchCountry", new Country());
+
 		return "country/countries";
 	}
 

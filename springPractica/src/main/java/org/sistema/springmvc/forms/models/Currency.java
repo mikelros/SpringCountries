@@ -15,8 +15,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.google.gson.annotations.Expose;
-
 /**
  * Represents a user.
  * 
@@ -27,20 +25,16 @@ import com.google.gson.annotations.Expose;
 public class Currency {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Expose
 	private int id;
 
-	@Expose
 	@NotNull(message = "Please enter a name.")
 	@Size(min = 1, max = 30, message = "Name must be between 1 and 30 characters long.")
 	private String name;
 
-	@Expose
 	@NotNull(message = "Please enter an abbreviation.")
 	@Size(min = 1, max = 3, message = "Abbreviation must be between and 1 and 3 characters long.")
 	private String abbreviation;
 
-	@Expose
 	@NotNull(message = "Please enter a value.")
 	@Min(value = 0, message = "must be >=0")
 	private Integer value;

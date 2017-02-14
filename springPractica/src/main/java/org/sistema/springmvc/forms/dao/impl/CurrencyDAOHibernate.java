@@ -24,7 +24,7 @@ public class CurrencyDAOHibernate extends GenericDAOHibernate<Currency> {
 
 		query.executeUpdate();
 	}
-	
+
 	@Transactional(readOnly = true)
 	public List<Currency> lastCurrencies(Integer id) {
 
@@ -34,5 +34,5 @@ public class CurrencyDAOHibernate extends GenericDAOHibernate<Currency> {
 
 		return query.list();
 	}
-	
+
 }

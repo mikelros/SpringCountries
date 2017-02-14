@@ -14,12 +14,15 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Represents a user.
  * 
  * @author Mikel Ros
  *
  */
+@JsonIgnoreProperties({"countries"})
 @Entity
 public class Currency {
 	@Id

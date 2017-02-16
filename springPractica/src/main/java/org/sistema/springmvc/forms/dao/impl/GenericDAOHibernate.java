@@ -44,9 +44,13 @@ public class GenericDAOHibernate<T> {
 	 * @throws HibernateException
 	 */
 	@Transactional
-	public void insert(T entity) {
+	public int insert(T entity) {
 		getSession().persist(entity);
 		getSession().flush();
+		
+		Integer id = (Integer)getSession().getIdentifier(entity);
+		
+		return id.intValue();
 	}
 
 	/**

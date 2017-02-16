@@ -42,8 +42,8 @@ public class CurrencyApiController {
 	}
 
 	@RequestMapping(value = "/currencies/new", method = RequestMethod.POST)
-	public void insertCurrency(@RequestBody @Valid Currency currency) {
-		currencyDAO.insert(currency);
+	public int insertCurrency(@RequestBody @Valid Currency currency) {
+		return currencyDAO.insert(currency);
 	}
 
 	@RequestMapping(value = "/currencies/update/{id}", method = RequestMethod.PUT)
